@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState } from 'react'
+import './App.css'
+
+import Header from './components/Header'
+import OptionButton from './components/optionButton'
+import spock from './images/icon-spock.svg'
+import lizard from './images/icon-lizard.svg'
+import rock from './images/icon-rock.svg'
+import paper from './images/icon-paper.svg'
+import scissors from './images/icon-scissors.svg'
 
 function App() {
+  const [score, setScore] = useState(0)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header score={score} />
+      <div className="game">
+        <OptionButton icon={spock} styleClass="spock" />
+        <OptionButton icon={lizard} styleClass="lizard" />
+        <OptionButton icon={rock} styleClass="rock" />
+        <OptionButton icon={paper} styleClass="paper" />
+        <OptionButton icon={scissors} styleClass="scissors" />
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
