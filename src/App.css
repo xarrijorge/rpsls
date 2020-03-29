@@ -88,6 +88,10 @@ body {
   max-width: 60%;
 }
 
+.optionButton:hover {
+  cursor: pointer;
+}
+
 .rock {
   bottom: 10%;
   right: 30%;
@@ -116,4 +120,19 @@ body {
   bottom: 10%;
   left: 30%;
   border: 12px solid hsl(189, 59%, 53%);
+}
+
+.rules {
+  width: 200px;
+  height: 200px;
+  background-color: gainsboro;
+}
+
+.ruleButton {
+  position: fixed;
+  bottom: 10%;
+  right: 10%;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
 }
