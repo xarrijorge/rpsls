@@ -1,8 +1,9 @@
 import React, { Fragment, useState } from 'react'
+import { Router, navigate } from '@reach/router'
 import './App.css'
 
 import Header from './components/Header'
-// import Result from './components/Result '
+import Result from './components/Result'
 import Rules from './components/Rules'
 
 import OptionButton from './components/optionButton'
@@ -19,38 +20,39 @@ function App() {
 
   const handleClick = event => {
     setScore(score + 1)
-    let selectedOption = event.target
-    console.log(selectedOption)
+    navigate('/result')
   }
 
   const toggleRules = () => {
     showRules === 'none' ? setShowRules('block') : setShowRules('none')
   }
+
+  const Game = () => (
+    <div className="game" path="/">
+      <OptionButton icon={spock} styleClass="spock" handleClick={handleClick} />
+      <OptionButton
+        icon={lizard}
+        styleClass="lizard"
+        handleClick={handleClick}
+      />
+      <OptionButton icon={rock} styleClass="rock" handleClick={handleClick} />
+      <OptionButton icon={paper} styleClass="paper" handleClick={handleClick} />
+      <OptionButton
+        icon={scissors}
+        styleClass="scissors"
+        handleClick={handleClick}
+      />
+    </div>
+  )
+
   return (
     <div className="app">
       <Header score={score} />
-      <div className="game">
-        <OptionButton
-          icon={spock}
-          styleClass="spock"
-          handleClick={handleClick}
-        />
-        <OptionButton
-          icon={lizard}
-          styleClass="lizard"
-          handleClick={handleClick}
-        />
-        <OptionButton icon={rock} styleClass="rock" handleClick={handleClick} />
-        <OptionButton
-          icon={paper}
-          styleClass="paper"
-          handleClick={handleClick}
-        />
-        <OptionButton
-          icon={scissors}
-          styleClass="scissors"
-          handleClick={handleClick}
-        />
+      <div>
+        <Router>
+          <Game path="/" />
+          <Result path="result" />
+        </Router>
         <button onClick={toggleRules} className="ruleButton">
           RULES
         </button>
