@@ -3,6 +3,9 @@ body {
   box-sizing: border-box;
   height: 100%;
   margin: 0;
+  text-transform: uppercase;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-weight: 600;
 }
 body * {
   box-sizing: border-box;
@@ -14,10 +17,12 @@ body {
   height: 100vh;
   max-height: 100vh;
   background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%)) no-repeat
-    center;
+    bottom;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: hsl(229, 25%, 31%);
 }
 
 .app {
@@ -30,8 +35,8 @@ body {
 }
 
 .header {
-  width: 80%;
-  border: 1px solid grey;
+  width: 60%;
+  border: 1px solid hsl(217, 16%, 45%);
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -41,9 +46,17 @@ body {
 }
 
 .header .title {
-  line-height: 0.1px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-weight: 700;
+  line-height: 0.88;
 }
 
+.header .title * {
+  padding: 0;
+  margin: 0;
+}
 .scoreboard {
   display: flex;
   flex-direction: column;
@@ -51,19 +64,20 @@ body {
   width: 100px;
   height: 80px;
   background-color: white;
-  color: grey;
   border-radius: 10px;
   text-align: center;
-  line-height: 1px;
+  line-height: 0.8;
 }
 .scoreboard * {
   margin: 0;
   padding: 0;
 }
 .scoreboard .scoreTitle {
+  color: #2a46c0;
+  font-size: 16px;
 }
 .scoreboard .scoreCount {
-  font-size: 30px;
+  font-size: 50px;
 }
 
 .game {
@@ -96,40 +110,60 @@ body {
   cursor: pointer;
 }
 
-.rock {
+.game .rock {
   bottom: 10%;
   right: 30%;
-  border: 12px solid hsl(349, 71%, 52%);
+  border: 12px solid #dc2e4e;
 }
 
-.paper {
+.game .paper {
   bottom: 45%;
   right: 20%;
-  border: 12px solid hsl(230, 89%, 62%);
+  border: 12px solid #4865f4;
 }
 
-.scissors {
+.game .scissors {
   left: 43%;
   top: 10%;
-  border: 12px solid hsl(39, 89%, 49%);
+  border: 12px solid #ec9e0e;
 }
 
-.lizard {
+.game .lizard {
   left: 20%;
   bottom: 45%;
-  border: 12px solid hsl(261, 73%, 60%);
+  border: 12px solid #834fe3;
 }
 
-.spock {
+.game .spock {
   bottom: 10%;
   left: 30%;
-  border: 12px solid hsl(189, 59%, 53%);
+  border: 12px solid #40b9ce;
 }
 
 .rules {
-  width: 200px;
-  height: 200px;
+  position: relative;
+  width: 370px;
+  height: 500px;
+  background: url('./images/image-rules-bonus.svg') no-repeat center;
   background-color: gainsboro;
+  background-origin: content-box;
+  z-index: 100;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 20px;
+  border-radius: 10px;
+}
+
+.rules p {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #3b4363;
+  text-align: center;
+  border-radius: 50%;
+  color: #3b4363;
+}
+.rules p:hover {
+  cursor: pointer;
 }
 
 .ruleButton {
@@ -139,7 +173,41 @@ body {
   width: 100px;
   height: 40px;
   border-radius: 10px;
+  background-color: transparent;
+  color: #fff;
 }
 
-.game {
+.ruleButton:hover {
+  cursor: pointer;
+}
+
+.rulesLink {
+  position: absolute;
+  bottom: 0;
+  font-size: 15px;
+  margin-bottom: 20px;
+  padding: 5px;
+  width: auto;
+  height: 30px;
+  border: 2px solid #3b4363;
+  color: #3b4363;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.resultBox {
+  width: 700px;
+  height: 500px;
+  display: flex;
+  padding: 0 20px;
+  justify-content: space-between;
+  border: 2px solid red;
+}
+.resultBox div {
+  display: block;
+  text-align: center;
+}
+
+.resultBox .rock {
+  border: 12px solid #dc2e4e;
 }

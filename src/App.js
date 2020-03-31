@@ -15,33 +15,48 @@ import scissors from './images/icon-scissors.svg'
 
 function App() {
   const [score, setScore] = useState(0)
-  const [userChoice, setUserChoice] = useState('')
+  const [userChoice, setUserChoice] = useState([rock, 'rock'])
+  const [compChoice, setCompChoice] = useState([])
   const [showRules, setShowRules] = useState('none')
 
-  const handleClick = event => {
-    setScore(score + 1)
+  const options = [
+    [rock, 'rock'],
+    [paper, 'paper'],
+    [scissors, 'scissors'],
+    [lizard, 'lizard'],
+    [spock, 'spock']
+  ]
+
+  const handleClick = index => {
+    const randomVar = Math.floor(Math.random() * options.length)
+    let userContent = options[index]
+    let compContent = options[randomVar]
+    // console.log(randomVar)
+    setUserChoice(userContent)
+    setCompChoice(compContent)
     navigate('/result')
   }
 
   const toggleRules = () => {
-    showRules === 'none' ? setShowRules('block') : setShowRules('none')
+    showRules === 'none' ? setShowRules('flex') : setShowRules('none')
+  }
+  const closeRules = () => {
+    setShowRules('none')
   }
 
+  const data = options.map((option, index) => (
+    <OptionButton
+      icon={option[0]}
+      styleClass={option[1]}
+      handleClick={handleClick.bind(this, index)}
+      onClick={handleClick}
+      key={index}
+    />
+  ))
   const Game = () => (
     <div className="game" path="/">
-      <OptionButton icon={spock} styleClass="spock" handleClick={handleClick} />
-      <OptionButton
-        icon={lizard}
-        styleClass="lizard"
-        handleClick={handleClick}
-      />
-      <OptionButton icon={rock} styleClass="rock" handleClick={handleClick} />
-      <OptionButton icon={paper} styleClass="paper" handleClick={handleClick} />
-      <OptionButton
-        icon={scissors}
-        styleClass="scissors"
-        handleClick={handleClick}
-      />
+      <Fragment>{data}</Fragment>
+      <Rules showRules={showRules} closeRules={closeRules} />
     </div>
   )
 
@@ -51,12 +66,15 @@ function App() {
       <div>
         <Router>
           <Game path="/" />
-          <Result path="result" />
+          <Result
+            path="result"
+            yourChoice={userChoice}
+            compChoice={compChoice}
+          />
         </Router>
         <button onClick={toggleRules} className="ruleButton">
           RULES
         </button>
-        <Rules showRules={showRules} />
       </div>
     </div>
   )

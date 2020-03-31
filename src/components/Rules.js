@@ -1,8 +1,17 @@
 import React from 'react'
 
-const Rules = ({ showRules }) => (
+const Rules = ({ showRules, closeRules }) => (
   <div className="rules" style={{ display: showRules }}>
-    These are the rules
+    <h4>Rules</h4>
+    <p onClick={closeRules}>--</p>
+    <a
+      href="https://www.youtube.com/watch?v=_PUEoDYpUyQ"
+      className="rulesLink"
+      rel="noopener noreferer"
+      target="_blank"
+    >
+      Let Sheldon Explain it
+    </a>
   </div>
 )
 
