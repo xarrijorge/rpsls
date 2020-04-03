@@ -37,9 +37,10 @@ function App() {
     spock: ['scissors', 'rock']
   }
 
-  // const scoreUpdate = () => {
-  //   if (result === 'WIN') setScore(score + 1)
-  // }
+  const clearStorage = () => {
+    localStorage.clear()
+    setScore(0)
+  }
   const checkWin = (player, house) => {
     console.log(player, house)
 
@@ -106,7 +107,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header score={score} />
+      <Header score={score} clearStorage={clearStorage} />
       <div>
         <Router>
           <Game path="/" />

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Header = ({ score }) => (
+const Header = ({ score, clearStorage }) => (
   <div className="header">
     <section className="title">
       <p>Rock</p>
@@ -14,6 +14,9 @@ const Header = ({ score }) => (
       <p className="scoreTitle"> Score</p>
       <p className="scoreCount">{score}</p>
     </section>
+    <p className="clearButton" onClick={clearStorage}>
+      Clear Score
+    </p>
   </div>
 )
 
