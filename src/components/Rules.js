@@ -7,8 +7,8 @@ const Rules = ({ showRules, closeRules }) => (
     <a
       href="https://www.youtube.com/watch?v=_PUEoDYpUyQ"
       className="rulesLink"
+      target="blank"
       rel="noopener noreferer"
-      target="_blank"
     >
       Let Sheldon Explain it
     </a>

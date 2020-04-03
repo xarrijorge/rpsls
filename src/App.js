@@ -15,9 +15,11 @@ import scissors from './images/icon-scissors.svg'
 
 function App() {
   const [score, setScore] = useState(0)
-  const [userChoice, setUserChoice] = useState([rock, 'rock'])
-  const [compChoice, setCompChoice] = useState([])
+  const [userChoice, setUserChoice] = useState('')
+  const [compChoice, setCompChoice] = useState('')
   const [showRules, setShowRules] = useState('none')
+  const [result, setResult] = useState('')
+  const [showWinner, setShowWiner] = useState('none')
 
   const options = [
     [rock, 'rock'],
@@ -27,13 +29,47 @@ function App() {
     [spock, 'spock']
   ]
 
-  const handleClick = index => {
+  const winSeq = {
+    rock: ['lizard', 'scissors'],
+    paper: ['rock', 'spock'],
+    scissors: ['paper', 'lizard'],
+    lizard: ['paper', 'spock'],
+    spock: ['scissors', 'rock']
+  }
+
+  const checkWin = (player, house) => {
+    console.log(player, house)
+
+    if (player === house) {
+      console.log('TIED')
+      setResult('TIED')
+      return
+    }
+    if (winSeq[player].includes(house)) {
+      console.log('WIN')
+      setResult('WIN')
+      return
+    }
+    if (!winSeq[player].includes(house)) {
+      console.log('LOSE')
+      setResult('LOSE')
+      return
+    }
+  }
+
+  const stateUpdate = async (player, house) => {
+    setUserChoice(player)
+    setCompChoice(house)
+    return 'done'
+  }
+
+  async function handleClick(index) {
     const randomVar = Math.floor(Math.random() * options.length)
-    let userContent = options[index]
-    let compContent = options[randomVar]
-    // console.log(randomVar)
-    setUserChoice(userContent)
-    setCompChoice(compContent)
+    let player = options[index][1]
+    let house = options[randomVar][1]
+    await stateUpdate(player, house)
+    checkWin(player, house)
+    setShowWiner('flex')
     navigate('/result')
   }
 
@@ -70,6 +106,8 @@ function App() {
             path="result"
             yourChoice={userChoice}
             compChoice={compChoice}
+            result={result}
+            showwinner={showWinner}
           />
         </Router>
         <button onClick={toggleRules} className="ruleButton">
