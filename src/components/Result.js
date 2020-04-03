@@ -1,4 +1,5 @@
 import React from 'react'
+import { navigate } from '@reach/router'
 
 import spock from '../images/icon-spock.svg'
 import lizard from '../images/icon-lizard.svg'
@@ -35,10 +36,7 @@ const Result = ({ yourChoice, compChoice, result, showwinner }) => (
       <ResultButton icon={yourChoice} styleClass={yourChoice} />
     </div>
     <div className="winnerBox" style={{ display: showwinner }}>
-      You {result}!
-      <button>
-        <a href="/">Try Again</a>
-      </button>
+      You {result}!<button onClick={() => navigate('/')}>Try Again</button>
     </div>
     <div>
       <h4>The House Picked</h4>

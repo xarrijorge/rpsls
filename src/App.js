@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { Router, navigate } from '@reach/router'
 import './App.css'
 
@@ -14,9 +14,9 @@ import paper from './images/icon-paper.svg'
 import scissors from './images/icon-scissors.svg'
 
 function App() {
-  const [score, setScore] = useState(0)
-  const [userChoice, setUserChoice] = useState('')
-  const [compChoice, setCompChoice] = useState('')
+  const [score, setScore] = useState(localStorage.getItem('score') || 0)
+  const [userChoice, setUserChoice] = useState('rock')
+  const [compChoice, setCompChoice] = useState('spock')
   const [showRules, setShowRules] = useState('none')
   const [result, setResult] = useState('')
   const [showWinner, setShowWiner] = useState('none')
@@ -37,6 +37,9 @@ function App() {
     spock: ['scissors', 'rock']
   }
 
+  // const scoreUpdate = () => {
+  //   if (result === 'WIN') setScore(score + 1)
+  // }
   const checkWin = (player, house) => {
     console.log(player, house)
 
@@ -48,6 +51,7 @@ function App() {
     if (winSeq[player].includes(house)) {
       console.log('WIN')
       setResult('WIN')
+      setScore(score + 1)
       return
     }
     if (!winSeq[player].includes(house)) {
@@ -95,6 +99,10 @@ function App() {
       <Rules showRules={showRules} closeRules={closeRules} />
     </div>
   )
+
+  useEffect(() => {
+    localStorage.setItem('score', score)
+  }, [score])
 
   return (
     <div className="app">
