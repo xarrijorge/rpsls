@@ -89,6 +89,7 @@ function App() {
     <OptionButton
       icon={option[0]}
       styleClass={option[1]}
+      tipText={winSeq[option[1]]}
       handleClick={handleClick.bind(this, index)}
       onClick={handleClick}
       key={index}
