@@ -14,9 +14,7 @@ import paper from './images/icon-paper.svg'
 import scissors from './images/icon-scissors.svg'
 
 function App() {
-  const [score, setScore] = useState(
-    parseInt(localStorage.getItem('score')) || 0
-  )
+  const [score, setScore] = useState(localStorage.getItem('score') || 0)
   const [userChoice, setUserChoice] = useState('rock')
   const [compChoice, setCompChoice] = useState('spock')
   const [showRules, setShowRules] = useState('none')

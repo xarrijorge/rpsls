@@ -123,6 +123,7 @@ body {
 }
 
 .optionButton img {
+  width: 50%;
   max-width: 60%;
 }
 
