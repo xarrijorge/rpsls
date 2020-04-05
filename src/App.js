@@ -111,7 +111,7 @@ function App() {
       <Header score={score} clearStorage={clearStorage} />
       <div>
         <Router>
-          <Game path="/" />
+          <Game path="/" default />
           <Result
             path="result"
             player={userChoice}
