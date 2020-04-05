@@ -29,18 +29,18 @@ function ResultButton({ styleClass }) {
   )
 }
 
-const Result = ({ yourChoice, compChoice, result, showwinner }) => (
+const Result = ({ player, house, result, showwinner }) => (
   <div className="resultBox">
     <div>
       <h4>You Picked</h4>
-      <ResultButton icon={yourChoice} styleClass={yourChoice} />
+      <ResultButton icon={player} styleClass={player} />
     </div>
     <div className="winnerBox" style={{ display: showwinner }}>
       You {result}!<button onClick={() => navigate('/')}>Try Again</button>
     </div>
     <div>
       <h4>The House Picked</h4>
-      <ResultButton styleClass={compChoice} />
+      <ResultButton icon={house} styleClass={house} />
     </div>
   </div>
 )

@@ -113,8 +113,8 @@ function App() {
           <Game path="/" />
           <Result
             path="result"
-            yourChoice={userChoice}
-            compChoice={compChoice}
+            player={userChoice}
+            house={compChoice}
             result={result}
             showwinner={showWinner}
           />
